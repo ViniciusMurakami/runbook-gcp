@@ -1,0 +1,15 @@
+{
+	"id" : "{{uuid()}}",
+	"first_name" : "{{firstName()}}",
+	"last_name" : "{{lastName()}}",
+	"family" : ['{{repeat(0,9)}}',"{{username()}}"],	
+	"contact" : {
+				"email" : "{{email()}}",
+				"ssn" : "{{ssn()}}",
+				"phone" : "{{phone()}}",
+				"ipv4" : "{{ipv4()}}"
+	},
+	"birth_date" : "{{date()}}",
+	"country" : "{{country()}}",
+	"company" : "{{company()}}"
+}
