@@ -1,0 +1,61 @@
+[{
+	"description": "Id of the person",
+	"mode": "REQUIRED",
+	"name": "id",
+	"type": "STRING"
+}, {
+	"description": "First name of the person",
+	"mode": "NULLABLE",
+	"name": "first_name",
+	"type": "STRING"
+}, {
+	"description": "Last name of the person",
+	"mode": "NULLABLE",
+	"name": "last_name",
+	"type": "STRING"
+}, {
+	"description": "Set of family names",
+	"mode": "REPEATED",
+	"name": "family",
+	"type": "STRING"
+}, {
+	"name": "contact",
+	"type": "RECORD",
+	"mode": "REPEATED",
+	"fields": [{
+			"name": "email",
+			"type": "STRING",
+			"mode": "NULLABLE"
+		},
+		{
+			"name": "ssn",
+			"type": "STRING",
+			"mode": "NULLABLE"
+		},
+		{
+			"name": "phone",
+			"type": "STRING",
+			"mode": "NULLABLE"
+		},
+		{
+			"name": "ipv4",
+			"type": "STRING",
+			"mode": "NULLABLE"
+		}
+	]
+}, {
+	"description": "Date of the anniversary",
+	"mode": "NULLABLE",
+	"name": "birth_date",
+	"type": "STRING"
+}, {
+	"description": "Country of the person",
+	"mode": "NULLABLE",
+	"name": "country",
+	"type": "STRING"
+}, {
+	"description": "Workplace of the person",
+	"mode": "NULLABLE",
+	"name": "company",
+	"type": "STRING"
+}]
