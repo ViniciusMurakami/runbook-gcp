@@ -65,7 +65,7 @@ Open Cloud Shell by clicking
 
 ### Create PubSub Topic
 ```bash
-gcloud pubsub topics create streaming.${USER/_/.}.pubsub.bq 
+gcloud pubsub topics create streaming.${USER/_/.}.pubsub.bq --project {{project-id}}
 ```
 
 
@@ -74,7 +74,8 @@ gcloud pubsub topics create streaming.${USER/_/.}.pubsub.bq
 gcloud pubsub subscriptions \
     create streaming.${USER/_/.}.pubsub.bq-sub --topic streaming.${USER/_/.}.pubsub.bq \
     --ack-deadline=60 \
-    --retain-acked-messages
+    --retain-acked-messages \
+    --project {{project-id}}
 ```
 
 
