@@ -106,7 +106,7 @@ bq mk \
 --table \
 --description "Streaming table" \
 {{project-id}}:$USER.streaming_pubsub_bq \
-../schema/bq-table-ddl.json
+schema/bq-table-ddl.json
 ```
 
 <!-- TODO SHARE DATASET -->
@@ -174,7 +174,7 @@ Since we need to populate PubSub, we will use the following schema to 'fake' our
 To upload the provided schema (already filled with the necessary parameters) to your GCS bucket, execute the command below:
 
 ```bash
-gsutil cp ../schema/runbook-streaming.json gs://tutorials_$USER/schema/
+gsutil cp schema/runbook-streaming.json gs://tutorials_$USER/schema/
 ```
 
 [ ! ] This JSON schema will be used in the next steps, it's extremely important to execute this step.
