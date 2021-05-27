@@ -14,8 +14,6 @@ https://stackoverflow.com/questions/64577178/how-to-specify-image-path-in-cloud-
 4. Transform the JSON file into rows
 5. Populate a Big Query Table
 
-[ ! ] *This tutorial does not work well if you're using Cloud Shell in a separate window.*
-
 ## Set the GCP Project
 
 Pick up your project
@@ -45,8 +43,13 @@ To be able to run the next steps, you're gonna need a valid GCP project with the
 
 For further details, please check the GCP documentation according to the component.
 
-## PubSub Topic/Subscription
+## Visiting google Console
 
+[ ! ] *This tutorial does not work well if you're using Cloud Shell in a separate window.*
+
+Please click [here](https://console.cloud.google.com/home/dashboard?project={{project-id}}&cloudshell=true) for a better experience
+
+## PubSub Topic/Subscription
 
 ### Open Google Cloud Shell
 
@@ -99,6 +102,22 @@ bq --location=southamerica-east1 mk \
 {{project-id}}:$USER
 ```
 
+### Share Dataset with Dataflow Account
+
+```bash
+PROJECT_NUMBER=$(gcloud projects describe pix-analytics-bv-des | grep -i projectNumber | awk -F' ' {'print $2'} | tr -d "'")
+DATAFLOW_ACCOUNT=$PROJECT_NUMBER'-compute@developer.gserviceaccount.com'
+
+bq show \
+--format=prettyjson \
+ {{project-id}}:$USER > policy.json
+
+jq '.access += [ {"role": "WRITER", "userByEmail": "'${DATAFLOW_ACCOUNT}'" } ]' policy.json > policy_updated.json
+
+bq update --source=policy_updated.json \
+{{project-id}}:$USER
+```
+
 
 ### Create Table
 ```bash
@@ -108,8 +127,6 @@ bq mk \
 {{project-id}}:$USER.streaming_pubsub_bq \
 schema/bq-table-ddl.json
 ```
-
-<!-- TODO SHARE DATASET -->
 
 ### Navigate to the BQ section
 
@@ -250,10 +267,6 @@ Run the following command to bootstrap the template:
 <!-- TODO MAKE IT DYNAMIC PROPERTIES -->
 
 ```bash
-NETWORK_PROJECT=default #FILL_WITH_YOUR_NETWORK
-SUBNET_PROJECT=default #FILL_WITH_YOUR_SUBNETWORK
-PUBLIC_IP=false #FILL_WITH_YOUR_PUBLIC_IP_BOOL
-
 gcloud dataflow jobs run streaming-${USER/_/-}-pubsub-bq \ 
 --gcs-location gs://dataflow-templates-southamerica-east1/latest/PubSub_Subscription_to_BigQuery \
 --region southamerica-east1 \
