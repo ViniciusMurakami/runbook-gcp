@@ -160,7 +160,7 @@ Open Cloud Shell by clicking
 ### Create a GCS Bucket
 
 ```bash
-gsutil mb gs://tutorials_$USER -p {{project-id}}
+gsutil mb -p {{project-id}} gs://tutorials_$USER 
 ```
 
 
