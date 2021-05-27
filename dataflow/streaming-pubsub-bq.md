@@ -234,8 +234,7 @@ PUBLIC_IP=false #FILL_WITH_YOUR_PUBLIC_IP_BOOL
 gcloud beta dataflow flex-template run streaming-${USER/_/-}-data-gen \
 --template-file-gcs-location gs://dataflow-templates-southamerica-east1/latest/flex/Streaming_Data_Generator \
 --region southamerica-east1 \
---parameters \
-schemaLocation=gs://tutorials_$USER/schema/runbook-streaming.json,topic=projects/{{project-id}}/topics/streaming.${USER/_/.}.pubsub.bq,qps=10000,messagesLimit=1000000,network=$NETWORK_PROJECT,subnetwork=$SUBNET_PROJECT,usePublicIps=$PUBLIC_IP
+--parameters schemaLocation=gs://tutorials_$USER/schema/runbook-streaming.json,topic=projects/{{project-id}}/topics/streaming.${USER/_/.}.pubsub.bq,qps=10000,messagesLimit=1000000,network=$NETWORK_PROJECT,subnetwork=$SUBNET_PROJECT,usePublicIps=$PUBLIC_IP
 ```
 
 The command above consumes an already provided template from GCP [Github](https://github.com/GoogleCloudPlatform/DataflowTemplates).
@@ -273,8 +272,7 @@ Run the following command to bootstrap the template:
 <!-- TODO MAKE IT DYNAMIC PROPERTIES -->
 
 ```bash
-gcloud dataflow jobs run streaming-${USER/_/-}-pubsub-bq \ 
---gcs-location gs://dataflow-templates-southamerica-east1/latest/PubSub_Subscription_to_BigQuery \
+gcloud dataflow jobs run streaming-${USER/_/-}-pubsub-bq --gcs-location gs://dataflow-templates-southamerica-east1/latest/PubSub_Subscription_to_BigQuery \
 --region southamerica-east1 \
 --staging-location gs://tutorials_$USER/temp \
 --subnetwork $SUBNET_PROJECT \
