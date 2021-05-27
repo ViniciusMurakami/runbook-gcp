@@ -8,11 +8,10 @@ In this tutorial we'll create the following scenario:
 https://stackoverflow.com/questions/64577178/how-to-specify-image-path-in-cloud-shell-when-writing-gcp-walkthrough-tutorial
  -->
 <!--![image info](/home/vinicius_higa/cloudshell_open/runbook-gcp/images/streaming-pubsub-bq.png) -->
-1. Generate JSON Files through a schema with fake info
-2. Populate a PubSub Topic
-3. Stream Data from PubSub
-4. Transform the JSON file into rows
-5. Populate a Big Query Table
+![runbook-streaming](https://user-images.githubusercontent.com/12385160/119853137-4daef800-bee6-11eb-9256-8b19b203d06c.png)
+
+1. Generate JSON Files through a schema with fake info and populate a PubSub Topic
+2. Stream Data from PubSub | Transform the JSON file into rows | Populate a Big Query Table
 
 ## Set the GCP Project
 
