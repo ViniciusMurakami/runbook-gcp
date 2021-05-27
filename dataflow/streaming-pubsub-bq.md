@@ -49,6 +49,11 @@ For further details, please check the GCP documentation according to the compone
 
 Please click [here](https://console.cloud.google.com/home/dashboard?project={{project-id}}&cloudshell=true) for a better experience
 
+After opening the GCP console page, copy/past the following command in the cloudshell:
+```bash
+cloudshell launch-tutorial -d dataflow/streaming-pubsub-bq.md
+```
+
 ## PubSub Topic/Subscription
 
 ### Open Google Cloud Shell
