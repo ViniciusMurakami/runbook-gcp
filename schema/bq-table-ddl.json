@@ -21,7 +21,7 @@
 }, {
 	"name": "contact",
 	"type": "RECORD",
-	"mode": "REPEATED",
+	"mode": "NULLABLE",
 	"fields": [{
 			"name": "email",
 			"type": "STRING",
