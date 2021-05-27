@@ -4,10 +4,6 @@
 
 In this tutorial we'll create the following scenario:
 
-<!-- ERRORS
-https://stackoverflow.com/questions/64577178/how-to-specify-image-path-in-cloud-shell-when-writing-gcp-walkthrough-tutorial
- -->
-<!--![image info](/home/vinicius_higa/cloudshell_open/runbook-gcp/images/streaming-pubsub-bq.png) -->
 ![runbook-streaming](https://user-images.githubusercontent.com/12385160/119853137-4daef800-bee6-11eb-9256-8b19b203d06c.png)
 
 1. Generate JSON Files through a schema with fake info and populate a PubSub Topic
@@ -164,7 +160,7 @@ Open Cloud Shell by clicking
 ### Create a GCS Bucket
 
 ```bash
-gsutil mb gs://tutorials_$USER
+gsutil mb gs://tutorials_$USER -p {{project-id}}
 ```
 
 
@@ -221,15 +217,17 @@ Now, finally we will call our first Dataflow Template: "Streaming Data Generator
 This template is almost a swiss-knife where gives you a few options to play around with BQ, PubSub and etc.
 The main objective as the name says, it generates data for streaming purpose, in our scenario we'll use a simple JSON  (already in your GCS bucket, if you followed the previous step) as an example to mock the data and send to PubSub.
 
+<!-- TODO MAKE IT DYNAMIC PROPERTIES -->
+Make the proper changes regarding your environment
+```bash
+NETWORK_PROJECT=default 
+SUBNET_PROJECT=default 
+PUBLIC_IP=false 
+```
+
 Run the following command to bootstrap the template:
 
-<!-- TODO MAKE IT DYNAMIC PROPERTIES -->
-
 ```bash
-NETWORK_PROJECT=default #FILL_WITH_YOUR_NETWORK
-SUBNET_PROJECT=default #FILL_WITH_YOUR_SUBNETWORK
-PUBLIC_IP=false #FILL_WITH_YOUR_PUBLIC_IP_BOOL
-
 gcloud beta dataflow flex-template run streaming-${USER/_/-}-data-gen \
 --template-file-gcs-location gs://dataflow-templates-southamerica-east1/latest/flex/Streaming_Data_Generator \
 --region southamerica-east1 \
