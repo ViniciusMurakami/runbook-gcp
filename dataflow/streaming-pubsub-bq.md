@@ -44,7 +44,7 @@ For further details, please check the GCP documentation according to the compone
 
 Please click [here](https://console.cloud.google.com/home/dashboard?project={{project-id}}&cloudshell=true) for a better experience
 
-After opening the GCP console page, copy/past the following command in the cloudshell:
+After opening the GCP console page, copy/paste the following command in the cloudshell:
 ```bash
 cloudshell launch-tutorial -d dataflow/streaming-pubsub-bq.md
 ```
@@ -106,7 +106,7 @@ bq --location=southamerica-east1 mk \
 ### Share Dataset with Dataflow Account
 
 ```bash
-PROJECT_NUMBER=$(gcloud projects describe pix-analytics-bv-des | grep -i projectNumber | awk -F' ' {'print $2'} | tr -d "'")
+PROJECT_NUMBER=$(gcloud projects describe {{project-id}} | grep -i projectNumber | awk -F' ' {'print $2'} | tr -d "'")
 DATAFLOW_ACCOUNT=$PROJECT_NUMBER'-compute@developer.gserviceaccount.com'
 
 bq show \
@@ -255,7 +255,7 @@ Navigate to your job and find out if your pipeline is up and running.
 
 ### Connecting PubSub to BQ
 
-On this second part, we'll use a template called "Pub/Sub Subscription to BigQuery". 
+In this second part, we'll use a template called "Pub/Sub Subscription to BigQuery". 
 This is a quite simple way to stream data from a message stream to BigQuery.
 
 All we have to do, is to fill out the following parameters:
